@@ -13,4 +13,6 @@ public interface FruitService {
     Fruit delete(long id);
 
     List<Fruit> list();
+
+    void removeAll();
 }

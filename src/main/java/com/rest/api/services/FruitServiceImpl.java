@@ -13,7 +13,8 @@ public class FruitServiceImpl implements FruitService {
 
     @Override
     public Fruit create(Fruit fruit) {
-        return db.put(fruit.getId(), fruit);
+        db.put(fruit.getId(), fruit);
+        return fruit;
     }
 
     @Override
@@ -37,5 +38,10 @@ public class FruitServiceImpl implements FruitService {
     @Override
     public List<Fruit> list() {
         return new ArrayList(Arrays.asList(db.values().toArray()));
+    }
+
+    @Override
+    public void removeAll(){
+        db.clear();
     }
 }
