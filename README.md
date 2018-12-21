@@ -1,1 +1,2 @@
-#Spring-bbot base rest api 
+# A sample Sprint boot based rest api
+  
