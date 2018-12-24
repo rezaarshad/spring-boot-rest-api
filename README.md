@@ -1,4 +1,4 @@
-# A sample Sprint boot based rest api
+# A sample Sprint boot based rest api with integration tests and api documentation
 
 Used technologies:
 
