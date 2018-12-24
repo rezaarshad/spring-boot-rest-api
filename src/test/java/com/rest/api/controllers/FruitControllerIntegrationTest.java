@@ -39,8 +39,6 @@ public class FruitControllerIntegrationTest {
     @Autowired
     private FruitService fruitService;
 
-    ObjectMapper mapper = new ObjectMapper();
-
     TestRestTemplate restTemplate = new TestRestTemplate();
 
     HttpHeaders headers = new HttpHeaders();
@@ -60,6 +58,23 @@ public class FruitControllerIntegrationTest {
     @After
     public void after() {
         fruitService.removeAll();
+    }
+
+    @Test
+    public void saveRestTest() throws JSONException {
+
+        Fruit cucumber = new Fruit(4, "cucumber");
+
+        HttpEntity<Fruit> entity = new HttpEntity<>(cucumber, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort(""),
+                HttpMethod.PUT, entity, String.class);
+
+        String expected = "{\"id\":4,\"name\":\"cucumber\"}";
+
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+        JSONAssert.assertEquals(expected, response.getBody(), false);
     }
 
     @Test
